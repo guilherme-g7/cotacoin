@@ -1,9 +1,34 @@
-var http = require('http');
+const express = require("express");
+const session = require("express-session");
+const passport = require("passport");
+require("./auth")(passport);
 
-// require the new module
-var handler = require('./handler');
+const bodyParse = require("body-parser");
 
-var server = http.createServer(handler);
+const app = express();
 
-server.listen(8080);
+global.rootPath = __dirname;
+global.path = 'http://localhost:8080/';
 
+
+app.use(bodyParse.json());
+app.use(bodyParse.urlencoded({ extended: false }));
+
+app.use(
+    session({
+        secret: "secret",
+        cookie: { maxAge: 50 * 60 * 1000 },
+        resave: false,
+        saveUninitialized: false,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+
+authenticationMiddleware = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login");
+};
