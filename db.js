@@ -1,15 +1,9 @@
-const mongoClient = require("mongodb").MongoClient;
+const Sequelize = require("sequelize");
+const configDb = require("./config/connectDb");
+const Usuario = require("./models/Usuario");
 
-const uri = "mongodb+srv://admin:admin@cluster0.baf6x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const connection = new Sequelize(configDb);
 
-const client = mongoClient.connect(uri, {useUnifiedTopology: true }, (error, connection) => {
-    if (error) {
-        console.log("falha na conexão");
-        console.log(error);
-        return;
-    }
-    global.connection = connection.db("aula");
-    console.log("conectou!");
-});
+Usuario.init(connection);
 
-module.exports = {}; 
+module.exports = {}
