@@ -1,13 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
- 
 
-class Usuario extends Model{
+class Acao extends Model{
     static init(connection){
         super.init({
-            nome: DataTypes.STRING,
-            email: DataTypes.STRING,
-            senha: DataTypes.STRING
-        }, {sequelize: connection, tableName: 'usuarios'});
+            tipo: DataTypes.STRING,
+            codigo: DataTypes.STRING,
+            setor: DataTypes.STRING,
+        }, {sequelize: connection, tableName: 'acoes'})
     }
     static associate(models){
         this.hasMany(models.Movimentacao, {foreignKey: "id", as: 'movimentacoes'});
@@ -15,4 +14,4 @@ class Usuario extends Model{
     }
 }
 
-module.exports = Usuario;
+module.exports = Acao;

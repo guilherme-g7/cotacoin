@@ -1,10 +1,19 @@
 const express = require("express");
+const http = require("http");
+const url = require("url");
+
 const session = require("express-session");
 const passport = require("passport");
 require("./auth")(passport);
 
 const bodyParse = require("body-parser");
+const db = require("./db");
+
+
 const UsuarioController = require("./controllers/UsuarioController");
+const AcoesController = require("./controllers/AcoesController");
+const DividendosController = require("./controllers/DividendosController");
+const MovimentacoesController = require("./controllers/MovimentacoesController");
 
 const app = express();
 
@@ -17,7 +26,7 @@ app.use(bodyParse.urlencoded({ extended: false }));
 
 app.use(
     session({
-        secret: "secret",
+        secret: "nosso-segredo",
         cookie: { maxAge: 50 * 60 * 1000 },
         resave: false,
         saveUninitialized: false,
@@ -48,6 +57,39 @@ app.get("/logout", (req, res) => {
     });
     res.redirect("/");
 });
+
+app.get("/acoes", authenticationMiddleware, (req, res) => {
+    AcoesController.loadAcoes(req, res);
+});
+
+app.post("/acoes", authenticationMiddleware, (req, res) => {
+    AcoesController.criaAcao(req, res);
+});
+
+app.get("/nova-acao", authenticationMiddleware, (req, res) => {
+    AcoesController.novaAcao(req, res);
+});
+
+app.get("/deleta-acao/:acao_id", authenticationMiddleware, (req, res) => {
+    AcoesController.deleteAcao(req, res);
+});
+
+
+app.get("/dividendos", authenticationMiddleware, (req, res) => {
+    DividendosController.loadDividendos(req, res);
+});
+app.post("/dividendos", authenticationMiddleware, (req, res) => {
+    DividendosController.createDividendos(req, res);
+});
+
+app.get("/movimentacoes", authenticationMiddleware, (req, res) => {
+    MovimentacoesController.loadMovimentacao(req, res);
+});
+
+app.post("/movimentacoes", authenticationMiddleware, (req, res) => {
+    MovimentacoesController.createMovimentacao(req, res);
+});
+
 
 app.get("/", authenticationMiddleware, (req, res) => {
     UsuarioController.loadIndex(req, res);
