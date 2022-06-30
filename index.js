@@ -78,8 +78,13 @@ app.get("/deleta-acao/:acao_id", authenticationMiddleware, (req, res) => {
 app.get("/dividendos", authenticationMiddleware, (req, res) => {
     DividendosController.loadDividendos(req, res);
 });
+
 app.post("/dividendos", authenticationMiddleware, (req, res) => {
     DividendosController.createDividendos(req, res);
+});
+
+app.get("/novo-dividendo", authenticationMiddleware, (req, res) => {
+    DividendosController.novoDividendo(req, res);
 });
 
 app.get("/movimentacoes", authenticationMiddleware, (req, res) => {

@@ -14,10 +14,15 @@ module.exports = {
         });
     },
 
+    novoDividendo(req, res) {
+        Acao.findAll().then((acoes) => {
+            res.render("ejs/novo-dividendo.ejs", { usuario: req.user, acoes: acoes });
+        });
+    },
+
     async createDividendos(req, res) {
-
+        console.log(req.body);
         await Dividendo.create({
-
             usuario_id: req.body.usuario_id,
             acao_id: req.body.acao_id,
             data_compra: req.body.data_compra,

@@ -9,7 +9,7 @@ module.exports = {
     },
 
     novaAcao(req, res) {
-        res.render("ejs/nova-acao");
+        res.render("ejs/nova-acao", { usuario: req.user });
     },
 
 
