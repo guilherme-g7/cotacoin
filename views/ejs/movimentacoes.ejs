@@ -1,0 +1,125 @@
+<%- include("./partials/header") %>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-8 align-self-center">
+                <h3 class="page-title mb-0 p-0">Movimentações</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Movimentações</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <div style="display: flex;
+        justify-content: flex-end;
+        padding: 8px;">
+            <a href="/nova-movimentacao"
+               class="btn btn-success text-white"
+               style="background: #2196f3;"
+            > Adicionar </a>
+        </div>
+
+        <div class="row">
+            <!-- column -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Movimentações</h4>
+
+                        <div class="table-responsive">
+                            <table class="table user-table">
+                                <thead>
+                                <tr>
+                                    <th class="border-top-0">Usuario</th>
+                                    <th class="border-top-0">Ação</th>
+                                    <th class="border-top-0">Tipo</th>
+                                    <th class="border-top-0">Quantidade</th>
+                                    <th class="border-top-0">Valor</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <% if (movimentacoes.length) {%>
+                                    <% movimentacoes.forEach( movimentacao => { %>
+                                        <tr>
+                                            <td><%= movimentacao.usuario_id %></td>
+                                            <td><%= movimentacao.acao_id %></td>
+                                            <td><%= movimentacao.tipo == '1' ? 'Compra' : 'Venda' %></td>
+                                            <td><%= movimentacao.quantidade %></td>
+                                            <td><%= movimentacao.valor %></td>
+
+                                        </tr>
+                                    <% }) %>
+                                <% }%>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="./assets/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="./assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app-style-switcher.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="js/custom.js"></script>
+</body>
+
+</html>
+
+
+

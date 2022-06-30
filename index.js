@@ -88,13 +88,16 @@ app.get("/novo-dividendo", authenticationMiddleware, (req, res) => {
 });
 
 app.get("/movimentacoes", authenticationMiddleware, (req, res) => {
-    MovimentacoesController.loadMovimentacao(req, res);
+    MovimentacoesController.loadMovimentacoes(req, res);
 });
 
 app.post("/movimentacoes", authenticationMiddleware, (req, res) => {
-    MovimentacoesController.createMovimentacao(req, res);
+    MovimentacoesController.criaMovimentacao(req, res);
 });
 
+app.get("/nova-movimentacao", authenticationMiddleware, (req, res) => {
+    MovimentacoesController.novaMovimentacao(req, res);
+});
 
 app.get("/", authenticationMiddleware, (req, res) => {
     UsuarioController.loadIndex(req, res);

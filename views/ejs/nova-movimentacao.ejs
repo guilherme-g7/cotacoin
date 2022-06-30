@@ -1,0 +1,136 @@
+<%- include("./partials/header") %>
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-8 align-self-center">
+                <h3 class="page-title mb-0 p-0">Cadastrar Movimentação</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cadastro de Movimentações</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/movimentacoes" method="post" class="form-horizontal form-material mx-2">
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Usuário</label>
+                                        <div>
+                                            <input type="text" name="usuario_id" value="<%= usuario.id %>" class="form-control ps-0 form-control-line">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="tipo">Ação</label>
+                                        <select class="form-control" name="acao_id" id="acao_id">
+
+                                            <% if (acoes.length) {%>
+                                                <% acoes.forEach( acao => { %>
+                                                    <option value="<%= acao.id %>"><%= acao.codigo %> - <%= acao.setor %></option>
+                                                <% }) %>
+                                            <% }%>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="tipo">Tipo</label>
+                                        <select class="form-control" name="tipo" id="tipo">
+                                            <option value="1">Compra</option>
+                                            <option value="2">Venda</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Quantidade</label>
+                                        <div>
+                                            <input type="text" name="quantidade" value="" class="form-control ps-0 form-control-line">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <div>
+                                            <input type="text" name="valor" value="" class="form-control ps-0 form-control-line">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12 d-flex">
+                                    <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                        Salvar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+
+    </div>
+
+    </footer>
+
+</div>
+
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="./assets/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="./assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app-style-switcher.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="js/custom.js"></script>
+</body>
+
+</html>
